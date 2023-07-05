@@ -13,6 +13,19 @@ before do
  init_db
 end
 
+configure do
+	init_db
+	@db.execute <<-SQL 
+	CREATE TABLE IF NOT EXISTS 
+	"Posts" 
+	(
+		"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+		"created_date" timestamp,
+		"content" text
+	)
+	SQL
+end
+
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
