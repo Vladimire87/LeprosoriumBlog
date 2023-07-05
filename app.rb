@@ -70,6 +70,10 @@ end
 post '/post/:id' do
 	id = params[:id]
 	comment = params[:comment]
- 
-	erb "#{comment}"
+	@db.execute("INSERT INTO 
+		'Comments' 
+		(created_date, content, post_id) 
+		VALUES (datetime(), ?, ?)", [comment, id])
+
+		redirect to('/post/' + id)
  end
