@@ -37,10 +37,12 @@ end
 post '/new_post' do
   post = params[:post]
 
-	if post.size <= 0
+	if post.empty?
 		@error = "Enter Post Text"
 		return erb :new_post
 	end
+
+	@db.execute("INSERT INTO 'Posts' (created_date, content) VALUES (datetime(), ?)", [post])
 
 	erb "#{post}"
 end
