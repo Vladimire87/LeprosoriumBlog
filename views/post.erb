@@ -13,3 +13,12 @@
   <br>
   <button type="submit" class="btn btn-primary btn-lg">Submit Comment</button>
 </form>
+<br>
+<h5>Comments:</h5>
+<% @comments.each do |comment|%>
+  <blockquote>
+    <p><%= comment["content"] %></p>
+    <small>Commented at: <i><%= comment["created_date"] %></i></small>
+  </blockquote>
+  <hr>
+<%end%>
