@@ -10,3 +10,9 @@ end
 get '/new_post' do
   erb :new_post
 end
+
+post '/new_post' do
+  post = params[:post]
+
+	erb "#{post}"
+end
