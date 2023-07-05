@@ -1,5 +1,9 @@
 <h4>Posts We Have:</h4>
 <% @all_posts.each do |post|%>
-  <p><%= post["content"] %></p>
-  <p><%= post["created_date"] %></p>
+  <p>
+    <%= post["content"] %>
+  </p>
+  <p>
+    <%= post["created_date"] %>
+  </p>
 <%end%>
