@@ -37,5 +37,10 @@ end
 post '/new_post' do
   post = params[:post]
 
+	if post.size <= 0
+		@error = "Enter Post Text"
+		return erb :new_post
+	end
+
 	erb "#{post}"
 end
