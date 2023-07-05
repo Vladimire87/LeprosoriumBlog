@@ -24,6 +24,16 @@ configure do
 		"content" text
 	)
 	SQL
+	@db.execute <<-SQL 
+	CREATE TABLE IF NOT EXISTS 
+	"Comments" 
+	(
+		"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+		"created_date" timestamp,
+		"content" text,
+		"post_id" integer
+	)
+	SQL
 end
 
 get '/' do
