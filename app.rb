@@ -51,7 +51,6 @@ end
 
 get '/post/:id' do
  id = params[:id]
-
  result = @db.execute 'SELECT * FROM Posts where id=?', [id]
  @post = result[0]
 
