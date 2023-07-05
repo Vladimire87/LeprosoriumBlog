@@ -48,3 +48,8 @@ post '/new_post' do
 
 	redirect '/'
 end
+
+get '/post/:id' do
+ id = params[:id]
+ erb "w"
+end
