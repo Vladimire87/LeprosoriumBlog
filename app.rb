@@ -56,3 +56,10 @@ get '/post/:id' do
 
  erb :post
 end
+
+post '/post/:id' do
+	id = params[:id]
+	comment = params[:comment]
+ 
+	erb "#{comment}"
+ end
