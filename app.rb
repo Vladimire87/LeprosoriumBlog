@@ -21,9 +21,11 @@ configure do
 	(
 		"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 		"created_date" timestamp,
-		"content" text
+		"content" text,
+		"author" text
 	)
 	SQL
+
 	@db.execute <<-SQL 
 	CREATE TABLE IF NOT EXISTS 
 	"Comments" 
@@ -47,14 +49,16 @@ get '/new_post' do
 end
 
 post '/new_post' do
-  post = params[:post]
+  @post = params[:post]
+	@author = params[:author]
 
-	if post.empty?
-		@error = "Enter Post Text"
+	if @post.empty? || @author.empty?
+		@error = "Enter Post Text and Author"
 		return erb :new_post
 	end
+	
 
-	@db.execute("INSERT INTO 'Posts' (created_date, content) VALUES (datetime(), ?)", [post])
+	@db.execute("INSERT INTO 'Posts' (created_date, content, author) VALUES (datetime(), ?, ?)", [@post, @author])
 
 	redirect '/'
 end
