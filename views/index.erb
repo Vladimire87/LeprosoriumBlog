@@ -1,13 +1,18 @@
 <h4>Posts We Have:</h4>
 <br>
 <% @all_posts.each do |post|%>
-  <p>
-    <%= post["content"] %>
-    <br>
-    Created at: 
-    <i><%= post["created_date"] %></i>
-    <br>
-    <a href="/post/<%= post["id"] %>">Comments</a>
-  </p>
-  <hr>
+  <div class="container-fluid">
+    <p class="lead">
+      <%= post["content"] %>
+    </p>
+    <div class="text-right">
+      <p>
+        <small>Created at: <i><%= post["created_date"] %></i> - <strong><%= post["author"] %></strong></small>
+      </p>
+      <p>
+        <a href="/post/<%= post["id"] %>">Comments</a>
+      </p>
+    </div>
+    <hr>
+  </div>
 <%end%>
