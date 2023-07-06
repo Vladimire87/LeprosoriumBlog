@@ -64,18 +64,18 @@ post '/new_post' do
 end
 
 get '/post/:id' do
- id = params[:id]
- result = @db.execute 'SELECT * FROM Posts where id=?', [id]
- @post = result[0]
+	id = params[:id]
+	result = @db.execute 'SELECT * FROM Posts where id=?', [id]
+	@post = result[0]
+	@comments = @db.execute 'SELECT * FROM Comments where post_id=? order by id', [id]
 
- @comments = @db.execute 'SELECT * FROM Comments where post_id=? order by id', [id]
-
- erb :post
+	erb :post
 end
 
 post '/post/:id' do
 	id = params[:id]
 	comment = params[:comment]
+
 	@db.execute("INSERT INTO 
 		'Comments' 
 		(created_date, content, post_id) 

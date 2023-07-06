@@ -1,15 +1,16 @@
-<h4>Post</h4>
-<p>
-  <%= @post["content"] %>
-  <br>
-  <br>
-  Created at: 
-  <i><%= @post["created_date"] %></i>
-  <br>
-</p>
-<br>
+<div class="container-fluid">
+  <p class="lead">
+    <%= @post["content"] %>
+  </p>
+  <div class="text-right">
+    <p>
+      <small>Created at: <i><%= @post["created_date"] %></i> - <strong><%= @post["author"] %></strong></small>
+    </p>
+  </div>
+  <hr>
+</div>
 <form action="/post/<%= @post["id"] %>" method="post" role="form">
-  <textarea name="comment" class="form-control" rows="6" placeholder="Type text here..."></textarea>
+  <textarea name="comment" class="form-control" rows="3" placeholder="Type text here..." required></textarea>
   <br>
   <button type="submit" class="btn btn-primary btn-lg">Submit Comment</button>
 </form>
